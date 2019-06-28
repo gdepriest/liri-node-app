@@ -7,6 +7,8 @@ var axios = require("axios");
 
 console.log(keys.spotify);
 
+var spacing = "\n\n=========================================================================\n\n";
+
 var spotify = new Spotify(keys.spotify);
 var randText = "random.txt";
 
@@ -37,7 +39,7 @@ inquirer.prompt([
             if (error) return console.log(error);
 
             var dataArray = data.split(", ");
-            console.log(dataArray)
+            // console.log(dataArray)
             var action = dataArray[0];
             var reAction = dataArray[1];
                         
@@ -51,8 +53,13 @@ inquirer.prompt([
                         if (err) {
                             return console.log('Error occurred: ' + err);
                         }
-                   
-                        console.log(data); 
+
+                        
+                        var songInfo = data.tracks.items[0];
+                        console.log(spacing);
+                        console.log(`${songInfo.name} \n\n Artist: ${songInfo.artists[0].name} \n\n Album : ${songInfo.album.name} \n\n Preview: ${songInfo.preview_url}`);
+                        console.log(spacing);
+ 
                     });
             }
 
@@ -60,17 +67,15 @@ inquirer.prompt([
 
             }
 
-            function movieThis() {
-                // console.log(reAction);
-                var movieName = reAction.join("+");
-                console.log(movieName);
-                axios.get("http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy").then(
+            function movieThis(reAction) {
+                axios.get("http://www.omdbapi.com/?t=" + reAction + "&y=&plot=short&apikey=trilogy").then(
                     function(response) {
-                    console.log(response.data);
-                    // console.log(`Title: ${movieName}`)
-                    // console.log("This movie was released: " + response.data.Released);
-                    // console.log("The movie's genre is " + response.data.Genre);
-                    // console.log("This movie was directed by " + response.data.Director);
+
+                        var movInfo = response.data
+
+                        console.log(spacing);
+                        console.log(`${movInfo.Title} \n\n Year: ${movInfo.Year} \n\n IMDB Rating: ${movInfo.Ratings[0].Value} \n\n Rotten Tomatoes Rating: ${movInfo.Ratings[1].Value} \n\n Country: ${movInfo.Country} \n\n Language: ${movInfo.Language} \n\n Plot: ${movInfo.Plot} \n\n Actors: ${movInfo.Actors}`);
+                        console.log(spacing);
 
                     })
 
