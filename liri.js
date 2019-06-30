@@ -5,8 +5,8 @@ var Spotify = require('node-spotify-api');
 var inquirer = require("inquirer");
 var axios = require("axios");
 var moment = require("moment");
-
 var spotify = new Spotify(keys.spotify);
+
 var randText = "random.txt";
 
 var spacing = "\n\n=========================================================================\n\n";
