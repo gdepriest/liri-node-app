@@ -112,9 +112,9 @@ function doWhatItSays() {
 
 * A REALLY IMPORTANT NOTE - if you are trying conThis within the random.txt, you need to remove the quotes from your query, as demonstrated in the following picture:
     - <img src="./images/random-text.PNG" alt="screen capture of necessary input for random.txt for concert returns">
-    - This is because the BandsInTown API doesn't like the quotes for the purposes of its query.  I think removing the quotes within the random.txt file is the easiest way to accomplish this.
+    - This is because the BandsInTown API doesn't like the quotes for the purposes of its query.  
 
-* Liri will continue to run after creating returns, since it is called within each function.  I experimented with Q to Quit within Inquirer, but couldn't get it to work, so I specify the usual way to exit a program - ctrl-C.  
+* Liri will continue to run after creating returns, since it is called within each function.  I experimented with Q to Quit within Inquirer, but couldn't get it to work, so I specify the usual way to exit - ctrl-C.  
 
 
 ## Getting Started 🏁
